@@ -11,6 +11,10 @@ import javax.persistence.Table;
 /**
  * StockWorkday entity. @author MyEclipse Persistence Tools
  */
+
+/**
+ * save  the day  which can transaction the stock.
+ */
 @Entity
 @Table(name = "stock_workday", catalog = "test")
 public class StockWorkday implements java.io.Serializable {

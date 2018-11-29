@@ -8,6 +8,10 @@ import javax.persistence.Table;
 /**
  * FundMaster entity. @author MyEclipse Persistence Tools
  */
+
+/**
+ * fund company
+ */
 @Entity
 @Table(name = "fund_master", catalog = "test")
 public class FundMaster implements java.io.Serializable {

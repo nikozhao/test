@@ -7,7 +7,6 @@ import java.util.concurrent.locks.Lock;
 /**
  * @Author: Niko Zhao
  * @Date: Create in 14:26 11/30/17
- * @Email: nikoz@synnex.com
  */
 public interface GobalLock {
     boolean lock(Object key);

@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  * @Author: Niko Zhao
  * @Date: Create in 04/13/18
- * @Email: nikoz@synnex.com
+ * @Email:
  */
 public class StockWorkDayTest extends BaseTest {
     @Autowired

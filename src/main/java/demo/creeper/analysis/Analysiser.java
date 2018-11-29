@@ -20,7 +20,11 @@ import java.util.Optional;
 /**
  * @Author: Niko Zhao
  * @Date: Create in 03/28/18
- * @Email: nikoz@synnex.com
+ * @Email:
+ */
+
+/**
+ * process data  which crawl from web parse into the FundMasterHoler
  */
 @Component
 @Slf4j
@@ -33,12 +37,14 @@ public class Analysiser {
     @Autowired
     private FundStockDetailRepository fundStockDetailRepository;
 
+    //Processing process
     public void analysiser(FundMasterHoler fundMasterHoler){
         analysisFund(fundMasterHoler);
         analysisStock(fundMasterHoler);
         analysisFundStockDetail(fundMasterHoler);
     }
 
+    //save or update the fund's stock  detail
     private void analysisFundStockDetail(FundMasterHoler fundMasterHoler) {
         for(FundStockDetail data : fundMasterHoler.getFundStockDetails()){
             FundStockDetail fundStockDetail = fundStockDetailRepository.findByStockNoAndFundNo(data.getStockNo(),data.getFundNo());
@@ -56,6 +62,7 @@ public class Analysiser {
         }
     }
 
+    //save stock which not in db
     private void analysisStock(FundMasterHoler fundMasterHoler) {
         for(Stock data : fundMasterHoler.getStocks()){
             Optional<Stock> stock = stockRepository.findById(data.getStockNo());
@@ -67,6 +74,7 @@ public class Analysiser {
         }
     }
 
+    //更新基金信息
     private void analysisFund(FundMasterHoler fundMasterHoler) {
 
         Optional<Fund> fund = fundRepository.findById(fundMasterHoler.getFund().getFundNo());

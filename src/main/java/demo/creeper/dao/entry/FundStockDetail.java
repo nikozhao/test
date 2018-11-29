@@ -9,6 +9,10 @@ import static javax.persistence.GenerationType.IDENTITY;
 /**
  * FundStockDetail entity. @author MyEclipse Persistence Tools
  */
+
+/**
+ * fund's top 10 stock detail info
+ */
 @Entity
 @Table(name = "fund_stock_detail", catalog = "test")
 public class FundStockDetail implements java.io.Serializable {

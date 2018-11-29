@@ -1,4 +1,4 @@
-package demo.creeper.config;
+package demo.creeper.poweron;
 
 import demo.creeper.StockClient;
 import okhttp3.OkHttpClient;
@@ -16,19 +16,26 @@ import java.util.List;
 /**
  * @Author: Niko Zhao
  * @Date: Create in 03/29/18
- * @Email: nikoz@synnex.com
+ * @Email:
+ */
+
+/**
+ * HTF(汇添富基金) Crawl process impl.
  */
 @Component
 public class HTFPowerOn implements PowerOn{
 
     @Autowired
+    //the service for pull fund's top 10 stock detail info
     private StockClient creeperService;
 
     private String getUrl(String stockNo){
         return "http://www.99fund.com/main/products/pofund/"+stockNo+"/fundgk.shtml";
     }
 
+    //interface main method
     public void powerOn(){
+        //send http request to get the fund list data
         String url = getUrl("000697");
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(url).build();
@@ -51,6 +58,7 @@ public class HTFPowerOn implements PowerOn{
             }
         });
 
+        //wait the http request return
         while (fundNos.size()<1){
             try {
                 Thread.sleep(1000);
@@ -61,6 +69,7 @@ public class HTFPowerOn implements PowerOn{
             }
 
         }
+        //get the top 10 stock detail info per fund
         for(String fundNo : fundNos){
             try {
                 creeperService.pullData(getUrl(fundNo));

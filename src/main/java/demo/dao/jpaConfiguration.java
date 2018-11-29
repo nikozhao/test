@@ -9,7 +9,7 @@ import javax.sql.DataSource;
 /**
  * @Author: Niko Zhao
  * @Date: Create in 17:21 12/18/17
- * @Email: nikoz@synnex.com
+ * @Email:
  */
 //@Configuration
 public class jpaConfiguration {

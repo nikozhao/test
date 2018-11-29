@@ -16,9 +16,18 @@ import java.util.List;
 /**
  * @Author: Niko Zhao
  * @Date: Create in 03/28/18
- * @Email: nikoz@synnex.com
+ * @Email:
+ */
+
+/**
+ * the template of stockParser.
  */
 public abstract class AbstractStockParser implements StockParser {
+    /**
+     * it defined the flow to parse data into FundMasterHoler. need impl detail in sub class
+     * @param content
+     * @return
+     */
     @Override
     public FundMasterHoler parserData(String content) {
         FundMasterHoler fundMasterHoler = new FundMasterHoler();

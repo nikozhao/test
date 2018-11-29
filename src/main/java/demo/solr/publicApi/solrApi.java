@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @Author: Niko Zhao
  * @Date: Create in 15:35 11/30/17
- * @Email: nikoz@synnex.com
+ * @Email:
  */
 @RestController
 public class solrApi {

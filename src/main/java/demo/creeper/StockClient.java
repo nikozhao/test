@@ -10,14 +10,13 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
-/**
+/** service for Crawl data from web and into db
  * @Author: Niko Zhao
  * @Date: Create in 15:57 02/26/18
- * @Email: nikoz@synnex.com
+ * @Email:
  */
 
 @Component("creeperService")
-
 public class StockClient {
 
     @Autowired

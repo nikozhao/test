@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * @Author: Niko Zhao
  * @Date: Create in 03/27/18
- * @Email: nikoz@synnex.com
+ * @Email:
  */
 public interface StockRepository extends JpaRepository<Stock, String> {
 

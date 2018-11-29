@@ -8,7 +8,6 @@ import java.io.Serializable;
 /**
  * @Author: Niko Zhao
  * @Date: Create in 10:10 12/20/17
- * @Email: nikoz@synnex.com
  */
 
 @ConfigurationProperties(prefix = "datasource")

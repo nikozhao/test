@@ -1,10 +1,11 @@
-package demo.creeper.config;
+package demo.creeper.poweron;
 
 /**
  * @Author: Niko Zhao
  * @Date: Create in 03/30/18
- * @Email: nikoz@synnex.com
+ * @Email:
  */
+@Deprecated
 public class AJJPowerOn implements PowerOn {
 
     @Override

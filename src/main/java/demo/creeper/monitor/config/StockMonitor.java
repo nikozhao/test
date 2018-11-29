@@ -12,13 +12,11 @@ import okhttp3.Request;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.util.ObjectUtils;
 
-import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -27,7 +25,11 @@ import java.util.List;
 /**
  * @Author: Niko Zhao
  * @Date: Create in 04/10/18
- * @Email: nikoz@synnex.com
+ * @Email:
+ */
+
+/**
+ * monitor the real time price
  */
 @Configuration
 @EnableScheduling
@@ -47,7 +49,7 @@ public class StockMonitor implements InitializingBean {
 
     @Scheduled(cron = "0 */1 * * * ?")
     public void monitor() {
-        if(!checkTime()){
+        if (checkTime()) {
             String url = geturl();
             OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder().url(url).build();
@@ -58,7 +60,7 @@ public class StockMonitor implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         StringBuffer sb = new StringBuffer();
-       Date start = getLastFive();
+        Date start = getLastFive();
         List<StockDay> stockDays = stockDayRepository.getStockDay(start);
         if (!ObjectUtils.isEmpty(stockDays)) {
             stockDays.forEach(stockDay -> {
@@ -67,12 +69,12 @@ public class StockMonitor implements InitializingBean {
                 }
                 sb.append(StockUtil.getSinaStockNo(stockDay.getStockNo()));
                 if (ObjectUtils.isEmpty(Threshold.MAX.get(stockDay.getStockNo()))
-                        || Threshold.MAX.get(stockDay.getStockNo()) < stockDay.getMax().doubleValue()) {
+                        || stockDay.getMax().doubleValue() > Threshold.MAX.get(stockDay.getStockNo())) {
                     Threshold.MAX.put(stockDay.getStockNo(), stockDay.getMax().doubleValue());
 
                 }
                 if (ObjectUtils.isEmpty(Threshold.MIN.get(stockDay.getStockNo()))
-                        || Threshold.MIN.get(stockDay.getStockNo()) < stockDay.getMin().doubleValue()) {
+                        || stockDay.getMin().doubleValue() < Threshold.MIN.get(stockDay.getStockNo())) {
                     Threshold.MIN.put(stockDay.getStockNo(), stockDay.getMin().doubleValue());
                 }
             });
@@ -81,8 +83,8 @@ public class StockMonitor implements InitializingBean {
     }
 
     private Date getLastFive() {
-        List<StockWorkday> stockWorkdays =stockWorkdayRepository.getLastFive();
-        return new Date(stockWorkdays.get(stockWorkdays.size()-1).getDay().getTime());
+        List<StockWorkday> stockWorkdays = stockWorkdayRepository.getLastFive();
+        return new Date(stockWorkdays.get(stockWorkdays.size() - 1).getDay().getTime());
     }
 
     private String geturl() {
@@ -91,11 +93,17 @@ public class StockMonitor implements InitializingBean {
 
     private Boolean checkTime() {
         boolean f = false;
-        Calendar cl =Calendar.getInstance();
-        SimpleDateFormat sdf =new SimpleDateFormat("HH:mm");
-        String[] dateStrings = sdf.format(cl.getTime()).split(":");
-        if(Integer.parseInt(dateStrings[0])>=15){
-            f= true;
+        Calendar cl = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        try {
+            long start = sdf.parse("09:15").getTime();
+            long end = sdf.parse("15:00").getTime();
+            long now = sdf.parse(sdf.format(cl.getTime())).getTime();
+            if (now >= start && now <= end) {
+                f = true;
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
         return f;
     }

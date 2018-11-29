@@ -10,6 +10,10 @@ import static javax.persistence.GenerationType.IDENTITY;
 /**
  * StockDay entity. @author MyEclipse Persistence Tools
  */
+
+/**
+ * the stock's transaction information . include  day,max,min
+ */
 @Entity
 @Table(name="stock_day"
     ,catalog="test"

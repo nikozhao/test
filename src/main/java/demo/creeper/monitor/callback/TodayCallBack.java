@@ -28,7 +28,11 @@ import java.util.List;
 /**
  * @Author: Niko Zhao
  * @Date: Create in 04/11/18
- * @Email: nikoz@synnex.com
+ * @Email:
+ */
+
+/**
+ * the callback after send http request to get the stock's price info
  */
 @Component
 public class TodayCallBack implements Callback {
@@ -59,6 +63,7 @@ public class TodayCallBack implements Callback {
                     String[] stocks = data[1].split(",");
                     if(stocks.length<2)continue;
                     List<Stock> tmp = stockRepository.findByStockNo(stockNo);
+                    //if the stock don't exit.then insert into db
                     if(ObjectUtils.isEmpty(tmp) ){
                         Stock stock = new Stock();
                         stock.setStockNo(stockNo);
@@ -70,7 +75,7 @@ public class TodayCallBack implements Callback {
                     if(!ObjectUtils.isEmpty(s)){
                         continue;
                     }
-
+                    //save the stockDay info
                     StockDay stockDay= new StockDay();
                     stockDay.setStockNo(stockNo);
                     stockDay.setMin(new BigDecimal(Double.parseDouble(stocks[5])));
@@ -82,6 +87,7 @@ public class TodayCallBack implements Callback {
 
                 }
             }
+            //save the StockWorkday
             if(index>0){
                 synchronized (this.getClass()){
                     Date date = getToday();

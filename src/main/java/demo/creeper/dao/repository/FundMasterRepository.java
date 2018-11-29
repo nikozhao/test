@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 /**
  * @Author: Niko Zhao
  * @Date: Create in 03/30/18
- * @Email: nikoz@synnex.com
+ * @Email:
  */
 public interface FundMasterRepository extends JpaRepository<FundMaster, String> {
 }

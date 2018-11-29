@@ -10,6 +10,10 @@ import javax.persistence.Table;
 /**
  * Fund entity. @author MyEclipse Persistence Tools
  */
+
+/**
+ * fund info
+ */
 @Entity
 @Table(name = "fund", catalog = "test")
 public class Fund implements java.io.Serializable {

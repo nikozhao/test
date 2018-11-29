@@ -16,7 +16,11 @@ import java.util.List;
 /**
  * @Author: Niko Zhao
  * @Date: Create in 03/28/18
- * @Email: nikoz@synnex.com
+ * @Email:
+ */
+
+/**
+ * parser the htf web and set data into FundMasterHoler
  */
 @Component
 public class HTFStockParser extends AbstractStockParser {

@@ -22,7 +22,7 @@ import java.util.Map;
 /**
  * @Author: Niko Zhao
  * @Date: Create in 10:31 10/25/17
- * @Email: nikoz@synnex.com
+ * @Email:
  */
 public class SybaseToMysqlExcel {
     private final String drive = "com.sybase.jdbc4.jdbc.SybDataSource";

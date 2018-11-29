@@ -5,7 +5,7 @@ import lombok.Data;
 /**
  * @Author: Niko Zhao
  * @Date: Create in 03/28/18
- * @Email: nikoz@synnex.com
+ * @Email:
  */
 @Data
 public class Hypothesis {

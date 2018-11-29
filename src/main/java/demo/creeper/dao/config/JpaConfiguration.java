@@ -15,10 +15,10 @@ import javax.sql.DataSource;
 /**
  * @Author: Niko Zhao
  * @Date: Create in 03/27/18
- * @Email: nikoz@synnex.com
+ * @Email:
  */
 @Configuration
-
+@Deprecated
 public class JpaConfiguration {
      //@Bean
     public DataSource dataSource(DataSourceConfig dataSourceConfig){

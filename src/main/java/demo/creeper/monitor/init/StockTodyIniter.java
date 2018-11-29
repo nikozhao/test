@@ -20,7 +20,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * @Author: Niko Zhao
  * @Date: Create in 04/11/18
- * @Email: nikoz@synnex.com
+ * @Email:
+ */
+
+/**
+ * the timer to init the StockDay
  */
 @Configuration
 @EnableScheduling
@@ -31,13 +35,14 @@ public class StockTodyIniter{
     @Autowired
     TodayCallBack todayCallBack;
 
-
+    //time cron
     @Scheduled(cron = "* */5 * * * ?")
     public void init(){
 
         Boolean flag = check();
         //flag=true;
         if(flag){
+            //get the stockMonitor info
             List<StockMonitor> stockMonitorList = stockMonitorRepository.findAll();
             StringBuffer sb = new StringBuffer();
             AtomicInteger i= new AtomicInteger();
@@ -46,6 +51,7 @@ public class StockTodyIniter{
                     sb.append(",");
                 }
                 sb.append(StockUtil.getSinaStockNo(stockMonitor.getStockNo()));
+                //ten stock send a http request.per stock split by comma
                 if(i.get() %10 ==9 ){
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder().url(getUrl(sb.toString())).build();
@@ -54,6 +60,7 @@ public class StockTodyIniter{
                 }
                 i.getAndIncrement();
             });
+            //send the http request .as the stock number lt ten and gt 0
             if(sb.length()>0){
                 OkHttpClient client = new OkHttpClient();
                 Request request = new Request.Builder().url(getUrl(sb.toString())).build();
@@ -64,7 +71,8 @@ public class StockTodyIniter{
 
     }
 
-
+    //method for test
+    @Deprecated
     public void initString(){
         List<String> strs =Arrays.asList("601828,300465,000732,600559,603555,300431,600438,002558,600600,600690,300369,000100",
                 "001979,000651,600019,000876,000895,601766,600048,002697,000418,300104,601318,601088" ,
@@ -91,6 +99,7 @@ public class StockTodyIniter{
         return StockUtil.url+ stockNo;
     }
 
+    //check time .hour need gt 15. as the stock transaction in 9:15 - 15:00
     private Boolean check() {
         boolean f = false;
         Calendar cl =Calendar.getInstance();

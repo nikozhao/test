@@ -16,7 +16,7 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 /**
  * @Author: Niko Zhao
  * @Date: Create in 04/12/18
- * @Email: nikoz@synnex.com
+ * @Email:
  */
 @ContextConfiguration(classes = BaseTest.TestConfiguration.class, initializers = YamlApplicationContextInitializer.class)
 @Slf4j

@@ -8,6 +8,10 @@ import javax.persistence.Table;
 /**
  * Stock entity. @author MyEclipse Persistence Tools
  */
+
+/**
+ * stock info
+ */
 @Entity
 @Table(name = "stock", catalog = "test")
 public class Stock implements java.io.Serializable {

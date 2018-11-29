@@ -7,6 +7,10 @@ import static javax.persistence.GenerationType.IDENTITY;
 /**
  * StockMonitor entity. @author MyEclipse Persistence Tools
  */
+
+/**
+ * to show which stock need monitor. monitor the price. I.E..price gte the max last 5 day or the price lte the min last 5 day.
+ */
 @Entity
 @Table(name = "stock_monitor", catalog = "test")
 public class StockMonitor implements java.io.Serializable {

@@ -3,7 +3,7 @@ package demo.rate;
 /**
  * @Author: Niko Zhao
  * @Date: Create in 10:18 12/27/17
- * @Email: nikoz@synnex.com
+ * @Email:
  */
 public class RateService {
     public static double pRate = 0.054;
