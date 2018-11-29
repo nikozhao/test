@@ -5,7 +5,7 @@ import java.util.Map;
 /**
  * @Author: Niko Zhao
  * @Date: Create in 11:17 10/25/17
- * @Email: nikoz@synnex.com
+ * @Email:
  */
 public class Table {
     private String columnName;

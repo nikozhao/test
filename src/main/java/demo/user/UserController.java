@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  * @Author: Niko Zhao
  * @Date: Create in 15:06 10/26/17
- * @Email: nikoz@synnex.com
+ * @Email:
  */
 @RequestMapping("/demo/user")
 @Controller

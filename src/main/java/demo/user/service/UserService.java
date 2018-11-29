@@ -5,7 +5,7 @@ import demo.user.bo.User;
 /**
  * @Author: Niko Zhao
  * @Date: Create in 15:12 10/26/17
- * @Email: nikoz@synnex.com
+ * @Email:
  */
 public interface UserService {
     String save(User user);

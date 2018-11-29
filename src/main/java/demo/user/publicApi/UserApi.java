@@ -15,7 +15,7 @@ import java.util.Map;
 /**
  * @Author: Niko Zhao
  * @Date: Create in 15:09 10/26/17
- * @Email: nikoz@synnex.com
+ * @Email:
  */
 @RestController
 @RequestMapping("/user1")

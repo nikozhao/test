@@ -14,7 +14,6 @@ import org.springframework.util.Assert;
 /**
  * @Author: Niko Zhao
  * @Date: Create in 14:30 11/30/17
- * @Email: nikoz@synnex.com
  */
 @Service
 public class RedisGobalLock implements GobalLock, InitializingBean {
